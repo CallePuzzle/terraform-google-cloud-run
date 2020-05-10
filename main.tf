@@ -19,12 +19,12 @@ resource "google_cloud_run_service" "this" {
         }
         resources {
           requests = {
-            cpu = "100m"
-            memory = "128Mi"
+            cpu = var.resources_requests_cpu
+            memory = var.resources_requests_memory
           }
           limits = {
-            cpu = "1000m"
-            memory = "512Mi"
+            cpu = var.resources_limits_cpu
+            memory = var.resources_limits_memory
           }
         }
       }
@@ -33,12 +33,14 @@ resource "google_cloud_run_service" "this" {
   }
 
   traffic {
-    percent         = 100
+    percent = 100
     latest_revision = true
   }
 }
 
 resource "google_cloud_run_domain_mapping" "this" {
+  count = var.domain_name ? 0 : 1
+
   name = var.domain_name
 
   location = var.region
@@ -48,8 +50,7 @@ resource "google_cloud_run_domain_mapping" "this" {
   }
 }
 
-
-resource "google_cloud_run_service_iam_binding" "binding" {
+resource "google_cloud_run_service_iam_binding" "this" {
   service = google_cloud_run_service.this.name
 
   location = var.region

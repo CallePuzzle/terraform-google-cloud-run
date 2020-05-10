@@ -11,6 +11,7 @@ variable "run_service_name" {
 
 variable "domain_name" {
   type = string
+  default = ""
 }
 
 variable "image" {
@@ -25,4 +26,24 @@ variable "env_vars" {
   }
   ))
   default = []
+}
+
+variable "resources_requests_cpu" {
+  type = string
+  default = "100m"
+}
+
+variable "resources_requests_memory" {
+  type = string
+  default = "128Mi"
+}
+
+variable "resources_limits_cpu" {
+  type = string
+  default = "100m"
+}
+
+variable "resources_limits_memory" {
+  type = string
+  default = "128Mi"
 }
