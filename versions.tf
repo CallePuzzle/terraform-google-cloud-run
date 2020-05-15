@@ -9,3 +9,8 @@ terraform {
     google-beta = ">= 2.7, <4.0"
   }
 }
+
+provider "google-beta" {
+  project     = var.project_id
+  region      = var.region
+}

@@ -1,7 +1,11 @@
 /*
 ** Variables
 */
-variable "project" {
+variable "project_id" {
+  type = string
+}
+
+variable "region" {
   type = string
 }
 
@@ -30,7 +34,7 @@ variable "env_vars" {
 
 variable "resources_requests_cpu" {
   type = string
-  default = "100m"
+  default = "1000m"
 }
 
 variable "resources_requests_memory" {
@@ -40,10 +44,17 @@ variable "resources_requests_memory" {
 
 variable "resources_limits_cpu" {
   type = string
-  default = "100m"
+  default = "1000m"
 }
 
 variable "resources_limits_memory" {
   type = string
   default = "128Mi"
+}
+
+variable "members_can_invoke" {
+  type = list(string)
+  default = [
+    "allUsers"
+  ]
 }
