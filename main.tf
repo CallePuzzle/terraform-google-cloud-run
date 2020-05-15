@@ -32,7 +32,7 @@ resource "google_cloud_run_service" "this" {
           }
         }
       }
-      container_concurrency = 20
+      container_concurrency = var.run_container_concurrency
     }
   }
 

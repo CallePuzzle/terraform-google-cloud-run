@@ -52,6 +52,11 @@ variable "resources_limits_memory" {
   default = "128Mi"
 }
 
+variable "run_container_concurrency" {
+  type = number
+  default = 20
+}
+
 variable "members_can_invoke" {
   type = list(string)
   default = [
