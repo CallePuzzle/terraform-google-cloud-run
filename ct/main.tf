@@ -9,7 +9,10 @@ module "continuous_testing" {
 
   project = "callepuzzle-lab"
   sa_name = "terraform-google-cloud-run-sa"
-  sa_roles = ["roles/run.admin"]
+  sa_roles = [
+    "roles/run.admin",
+    "roles/iam.serviceAccountUser",
+  ]
 
   organization = "CallePuzzle"
   repository = "terraform-google-cloud-run"
@@ -20,4 +23,14 @@ module "continuous_testing" {
     "CT_SA_KEY",
     "CT_SA_EMAIL",
   ]
+}
+
+output "sa_key" {
+  sensitive = true
+  value = module.continuous_testing.key
+}
+
+output "sa_email" {
+  sensitive = true
+  value = module.continuous_testing.email
 }
