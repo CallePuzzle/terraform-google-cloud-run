@@ -19,7 +19,7 @@ jobs:
 
       - name: Credentials
         working-directory: test
-        run: echo $SA_KEY > .google-credentials.json
+        run: echo $SA_KEY > google-credentials.json
 
       - name: Golang setup
         uses: actions/setup-go@v1
@@ -39,4 +39,4 @@ jobs:
         run: go test -v
         working-directory: test
         env:
-          GOOGLE_CREDENTIALS: .google-credentials.json
+          GOOGLE_CREDENTIALS: google-credentials.json
