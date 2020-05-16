@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Credentials
+        working-directory: test
         run: echo $SA_KEY > .google-credentials.json
 
       - name: Golang setup
@@ -38,4 +39,4 @@ jobs:
         run: go test -v
         working-directory: test
         env:
-          GOOGLE_CREDENTIALS: ${{env.GITHUB_WORKSPACE}}/.google-credentials.json
+          GOOGLE_CREDENTIALS: .google-credentials.json
