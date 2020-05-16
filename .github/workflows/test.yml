@@ -1,0 +1,36 @@
+name: Continuous testing
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
+
+env:
+  GOOGLE_CLOUD_PROJECT_ID: ${{ secrets.CT_PROJECT_ID }}
+  REGION: ${{ secrets.CT_REGION }}
+  SA_KEY: ${{ secrets.CT_SA_KEY_JSON }}
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Credentials
+        run: echo $SA_KEY > .google-credentials.json
+
+      - name: Golang setup
+        uses: actions/setup-go@v1
+
+      - name: Setup Terraform
+          uses: autero1/action-terraform@v0.1.0
+          with:
+            terraform_version: 0.12.25
+
+      - name: Run Go Tests
+        run: go test -v
+        working-directory: test
+        env:
+          GOOGLE_CREDENTIALS: ${{env.GITHUB_WORKSPACE}}/.google-credentials.json
+
