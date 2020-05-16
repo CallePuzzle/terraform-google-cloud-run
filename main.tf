@@ -4,10 +4,10 @@
 resource "google_cloud_run_service" "this" {
   name     = var.run_service_name
   location = var.region
-  project = var.project_id
+  project = var.project
 
   metadata {
-    namespace = var.project_id
+    namespace = var.project
   }
 
   template {
@@ -47,10 +47,10 @@ resource "google_cloud_run_domain_mapping" "this" {
 
   name = var.domain_name
   location = var.region
-  project = var.project_id
+  project = var.project
 
   metadata {
-    namespace = var.project_id
+    namespace = var.project
   }
 
   spec {
@@ -60,7 +60,7 @@ resource "google_cloud_run_domain_mapping" "this" {
 
 resource "google_cloud_run_service_iam_binding" "this" {
   service = google_cloud_run_service.this.name
-  project = var.project_id
+  project = var.project
   location = var.region
 
   role = "roles/run.invoker"

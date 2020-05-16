@@ -1,7 +1,7 @@
 /*
 ** Variables
 */
-variable "project_id" {
+variable "project" {
   type = string
 }
 

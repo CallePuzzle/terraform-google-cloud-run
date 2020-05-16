@@ -25,7 +25,7 @@ func TestTerraformGcp(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"project_id": projectId,
+			"project": projectId,
 			"region": region,
 			"image": image,
 			"run_service_name": runServiceName,
