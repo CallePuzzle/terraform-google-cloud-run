@@ -30,7 +30,7 @@ jobs:
 
       - name: Download Go modules
         working-directory: test
-        run: go mod download
+        run: go get
 
       - name: Run Go tests
         run: go test -v
