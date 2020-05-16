@@ -5,7 +5,7 @@ terraform {
   }
 }
 module "continuous_testing" {
-  source = "git::https://github.com/CallePuzzle/terraform-google-github-continuous-testing.git?ref=1.1.0"
+  source = "git::https://github.com/CallePuzzle/terraform-google-github-continuous-testing.git?ref=1.2.0"
 
   project = "callepuzzle-lab"
   sa_name = "terraform-google-cloud-run-sa"
@@ -18,6 +18,6 @@ module "continuous_testing" {
     "CT_PROJECT_ID",
     "CT_REGION",
     "CT_SA_KEY",
-    "CT_SA_KEY_JSON",
+    "CT_SA_EMAIL",
   ]
 }
