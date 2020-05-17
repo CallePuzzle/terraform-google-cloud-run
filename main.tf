@@ -42,22 +42,6 @@ resource "google_cloud_run_service" "this" {
   }
 }
 
-resource "google_cloud_run_domain_mapping" "this" {
-  count = var.domain_name == "" ? 0 : 1
-
-  name = var.domain_name
-  location = var.region
-  project = var.project
-
-  metadata {
-    namespace = var.project
-  }
-
-  spec {
-    route_name = google_cloud_run_service.this.name
-  }
-}
-
 resource "google_cloud_run_service_iam_binding" "this" {
   service = google_cloud_run_service.this.name
   project = var.project

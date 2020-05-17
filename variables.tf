@@ -13,11 +13,6 @@ variable "run_service_name" {
   type = string
 }
 
-variable "domain_name" {
-  type = string
-  default = ""
-}
-
 variable "image" {
   type = string
 }
