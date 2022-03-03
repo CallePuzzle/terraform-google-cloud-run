@@ -1,9 +1,8 @@
 name: Continuous testing
 on:
-  push:
+  pull_request:
     branches:
-      - '*'
-      - '!master'
+      - main
 
 env:
   GOOGLE_CLOUD_PROJECT_ID: ${{ secrets.CT_PROJECT_ID }}
