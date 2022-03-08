@@ -9,6 +9,7 @@ env:
   REGION: ${{ secrets.CT_REGION }}
   SA_KEY: ${{ secrets.CT_SA_KEY }}
   SA_EMAIL: ${{ secrets.CT_SA_EMAIL }}
+  TERRAFORM_VERSION: 0.12.25
 
 jobs:
   test-action:
@@ -31,9 +32,9 @@ jobs:
           go-version: 1.14
 
       - name: Setup Terraform
-        uses: autero1/action-terraform@v0.1.0
+        uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 0.12.25
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
 
       - name: Download Go modules
         working-directory: test
