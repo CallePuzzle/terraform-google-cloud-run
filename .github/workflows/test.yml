@@ -17,12 +17,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      - name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
         with:
-          version: '278.0.0'
-          service_account_email: ${{ env.SA_EMAIL }}
-          service_account_key: ${{ env.SA_KEY }}
-          export_default_credentials: true
+          credentials_json: ${{ env.SA_KEY }}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
 
       - name: Golang setup
         uses: actions/setup-go@v1
