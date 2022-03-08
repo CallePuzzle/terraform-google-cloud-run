@@ -9,7 +9,7 @@ env:
   REGION: ${{ secrets.CT_REGION }}
   SA_KEY: ${{ secrets.CT_SA_KEY }}
   SA_EMAIL: ${{ secrets.CT_SA_EMAIL }}
-  TERRAFORM_VERSION: 0.12.25
+  TERRAFORM_VERSION: 1.1.6
 
 jobs:
   test-action:
